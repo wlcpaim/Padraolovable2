@@ -8,12 +8,28 @@ const SEED_PRODUCTS = [
   { id: 'p3', name: 'Monitor 4K', price: 2200, stock: 0, status: 'out' }
 ];
 
+const SEED_LEADS = [
+  { id: 'l1', name: 'Tech Solutions Ltda', stage: 'Lead' },
+  { id: 'l2', name: 'Global Corp', stage: 'Proposta' },
+  { id: 'l3', name: 'Inova Digital', stage: 'Em Contato' },
+  { id: 'l4', name: 'Startup XYZ', stage: 'Fechado' }
+];
+
 const db = {
   async getProducts() {
     const stored = localStorage.getItem('products');
     if (!stored) {
       localStorage.setItem('products', JSON.stringify(SEED_PRODUCTS));
       return SEED_PRODUCTS;
+    }
+    return JSON.parse(stored);
+  },
+  
+  async getLeads() {
+    const stored = localStorage.getItem('leads');
+    if (!stored) {
+      localStorage.setItem('leads', JSON.stringify(SEED_LEADS));
+      return SEED_LEADS;
     }
     return JSON.parse(stored);
   },
