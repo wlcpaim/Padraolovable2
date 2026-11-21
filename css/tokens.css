@@ -1,0 +1,19 @@
+/* css/tokens.css */
+:root {
+  --bg-app: #09090b; /* zinc-950 */
+  --bg-surface: #18181b; /* zinc-900 */
+  --text-main: #f4f4f5; /* zinc-100 */
+  --text-muted: #a1a1aa; /* zinc-400 */
+  --primary: #3b82f6; /* blue-500 */
+  --danger: #ef4444; /* red-500 */
+  --success: #22c55e; /* green-500 */
+  --border: #27272a; /* zinc-800 */
+  --radius-md: 0.5rem;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-family: 'Inter', system-ui, sans-serif;
+}
