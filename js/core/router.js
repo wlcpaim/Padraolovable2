@@ -8,50 +8,39 @@ import { Funil } from '../modules/funil.js';
 import './db.js';
 
 const routes = {
-  '#dashboard': () => {
+  '#dashboard': async () => {
     const el = document.querySelector('[data-view="dashboard"]');
     if (el) el.innerHTML = Dashboard.render();
   },
-  '#pdv': () => {
+  '#pdv': async () => {
     const el = document.querySelector('[data-view="pdv"]');
-    if (el) el.innerHTML = PDV.render();
+    if (el) await PDV.render(el);
   },
-  '#estoque': () => {
+  '#estoque': async () => {
     const el = document.querySelector('[data-view="estoque"]');
-    if (el) el.innerHTML = Estoque.render();
+    if (el) await Estoque.render(el);
   },
-  '#funil': () => {
+  '#funil': async () => {
     const el = document.querySelector('[data-view="funil"]');
     if (el) el.innerHTML = Funil.render();
   }
 };
 
-function router() {
+async function router() {
   const hash = window.location.hash || '#dashboard';
-  const viewKey = hash.replace('#', '') || 'dashboard';
+  const viewKey = hash.replace('#', '');
 
-  // Oculta todas as panes
-  document.querySelectorAll('.view-pane').forEach(pane => {
-    pane.style.display = 'none';
-  });
+  document.querySelectorAll('.view-pane').forEach(pane => pane.style.display = 'none');
 
-  // Exibe a ativa
   const activePane = document.querySelector(`[data-view="${viewKey}"]`);
   if (activePane) {
     activePane.style.display = 'block';
     const renderFn = routes[hash] || routes['#dashboard'];
-    renderFn();
+    await renderFn();
   } else {
-    // Fallback para dashboard
     window.location.hash = '#dashboard';
   }
 }
 
 window.addEventListener('hashchange', router);
-window.addEventListener('load', () => {
-  if (!window.location.hash) {
-    window.location.hash = '#dashboard';
-  } else {
-    router();
-  }
-});
+window.addEventListener('load', router);
