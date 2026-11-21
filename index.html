@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WLC OmniRetail SaaS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/tokens.css">
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { bg: { app: '#09090b', surface: '#18181b' }, primary: '#3b82f6' } } } }
+  </script>
+</head>
+<body class="bg-bg-app text-zinc-100 min-h-dvh flex">
+  <aside class="w-64 border-r border-zinc-800 p-4 space-y-6">
+    <div class="text-xl font-bold">OmniRetail</div>
+    <nav class="space-y-2">
+      <a href="#dashboard" class="block p-2 rounded hover:bg-zinc-800 transition">Dashboard</a>
+      <a href="#pdv" class="block p-2 rounded hover:bg-zinc-800 transition">PDV</a>
+      <a href="#estoque" class="block p-2 rounded hover:bg-zinc-800 transition">Estoque</a>
+      <a href="#funil" class="block p-2 rounded hover:bg-zinc-800 transition">Funil</a>
+    </nav>
+  </aside>
+  <main id="app" class="flex-1 p-8">
+    <div id="content"></div>
+  </main>
+  <script type="module" src="js/core/router.js"></script>
+</body>
+</html>
